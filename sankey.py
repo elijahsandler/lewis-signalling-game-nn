@@ -1,8 +1,7 @@
 """
 File: sankey.py
 Description:  A simple library for building sankey diagrams from a dataframe
-Author: John Rachlin
-Date: etc.
+Author: John Rachlin and Elijah Sandler
 """
 import pandas as pd
 import plotly.graph_objects as go
@@ -90,18 +89,10 @@ def make_sankey(df, *cols, vals=None, title='', save=None, **kwargs):
 
     sk = go.Sankey(link=link, node=node)
     fig = go.Figure(sk)
-
-    # For dashboarding, you will want to return the fig
-    # rather than show the fig.
     
     fig.update_layout(title_text=title)
 
     fig.show()
-    
-    # This requires installation of kaleido library
-    # https://pypi.org/project/kaleido/
-    # See: https://anaconda.org/conda-forge/python-kaleido
-    # conda install -c conda-forge python-kaleido
 
     if save != None:
         fig.write_image(file=save)
